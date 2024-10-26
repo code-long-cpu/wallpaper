@@ -25,4 +25,8 @@
 /* 文章场景相关 */
 view, swiper, swiper-item, image {
   box-sizing: border-box;
+}
+.pageBg {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, transparent, #fff 400rpx), linear-gradient(to left, #FADBD8 20%, #ABEBC6);
 }page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}

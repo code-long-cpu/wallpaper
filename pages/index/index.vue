@@ -1,5 +1,5 @@
 <template>
-	<view class="home">
+	<view class="home pageBg">
 		<!-- tabbar栏目 -->
 		<view class="banner">
 			<swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" autoplay circular>
@@ -118,8 +118,13 @@
 				display:flex;
 				justify-content: center;
 				align-items: center;
+				:deep(){
+					.uni-icons{
+						color:$base-theme-color !important;
+					}
+				}
 				.text{
-					color:rgb(40, 176, 138);
+					color:$base-theme-color;
 					font-weight:600;
 					font-size:30rpx;
 				}
@@ -157,6 +162,12 @@
 			.date{
 				color:#B3B3B3;
 			}
+			:deep(){
+				.uni-icons{
+					color:$base-theme-color !important;
+				}
+			}
+			
 			// margin-top:50rpx;
 			.content{
 				// border:solid 1 rpx red;

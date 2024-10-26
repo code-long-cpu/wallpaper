@@ -33,6 +33,7 @@
 .userLayout .userInfo .avatar.data-v-0f7520f0 {
   width: 160rpx;
   height: 160rpx;
+  border: solid 10rpx white;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -54,7 +55,15 @@
   border-radius: 10rpx;
   border: solid 1px #eee;
   box-shadow: 0 0 30rpx rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 .userLayout .section .list .last.data-v-0f7520f0 {
   border-bottom: 0;
+}
+.userLayout .section .list .contact.data-v-0f7520f0 {
+  position: absolute;
+  bottom: 0;
+  height: 90rpx;
+  width: 100%;
+  opacity: 0;
 }

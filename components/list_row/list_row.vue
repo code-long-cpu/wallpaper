@@ -30,6 +30,7 @@
 		justify-content: space-between;
 		align-items: center;
 		padding:0 30rpx;
+		background-color:white;
 		.left, .right{
 			display:flex;
 			justify-content: space-between;

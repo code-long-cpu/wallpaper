@@ -30,6 +30,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 30rpx;
+  background-color: white;
 }
 .row .left.data-v-fc6e88d6, .row .right.data-v-fc6e88d6 {
   display: flex;
