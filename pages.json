@@ -3,21 +3,39 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "龙家乐壁纸"
+				"navigationBarTitleText": "龙家乐壁纸",
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path" : "pages/classify/classify",
 			"style" : 
 			{
-				"navigationBarTitleText" : "分类"
+				"navigationBarTitleText" : "分类",
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path" : "pages/user/user",
 			"style" : 
 			{
-				"navigationBarTitleText" : "我的"
+				"navigationBarTitleText" : "我的",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path" : "pages/classList/classList",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/preview/preview",
+			"style" : 
+			{
+				"navigationBarTitleText" : "预览页面",
+				"navigationStyle": "custom"
 			}
 		}
 	],

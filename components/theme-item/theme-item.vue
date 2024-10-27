@@ -1,13 +1,13 @@
 <template>
 	<view class="themeItem">
 		<!-- 正常分类 -->
-		<navigator class="box" v-if="!isMore">
+		<navigator class="box" v-if="!isMore" url="/pages/classList/classList">
 			<image class = "img" src="../../common/images/classify1.jpg" mode="aspectFill"></image>
 			<view class="mask">明星美女</view>
 			<view class="tab">3天前更新</view>
 		</navigator>
 		<!-- 更多 -->
-		<navigator class="box more" v-if="isMore">
+		<navigator class="box more" v-if="isMore" url="/pages/classify/classify" open-type="reLaunch">
 			<image class = "img" src="../../common/images/more.jpg" mode="aspectFill"></image>
 			<view class="mask">
 				<uni-icons type="more-filled" size="30" color="rgba(255,255,255)"></uni-icons>

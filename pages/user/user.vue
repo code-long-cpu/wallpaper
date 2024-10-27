@@ -11,7 +11,7 @@
 		<view class="section">
 			<view class="list">
 				<!-- 我的下载 -->
-				<list_row>
+				<list_row url="/pages/classify/classify">
 					<template #l-icon>
 						<uni-icons type="download-filled" size="30" color="rgb(40, 176, 138)"></uni-icons>
 					</template>
@@ -19,7 +19,7 @@
 					<template #r-text>33</template>
 				</list_row>
 				<!-- 我的收藏 -->
-				<list_row>
+				<list_row url="/pages/classify/classify">
 					<template #l-icon>
 						<uni-icons type="star-filled" size="30" color="rgb(40, 176, 138)"></uni-icons>
 					</template>
@@ -71,6 +71,9 @@
 		uni.makePhoneCall({
 			phoneNumber: '114' //仅为示例
 		});
+	}
+	const tiaozhuan = ()=>{
+		console.log("111")
 	}
 </script>
 

@@ -1,29 +1,39 @@
 <template>
 	<view class="row">
-		<class class="left">
+		<view class="left">
 			<view>
 				<slot name="l-icon"></slot>
 			</view> 
 			<view class="text">
 				<slot name="l-text"></slot>
 			</view>
-			
-		</class>
-		<class class="right">
+		</view>
+		<view class="right">
 			<view class="text">
 				<slot name="r-text" ></slot>
 			</view>
 			<uni-icons type="forward" size="20" color="#aaa"></uni-icons>
-		</class>
+		</view>
+		<!-- 跳转slot -->
+		<view class="navigate">
+			<navigator :url="url" class="nav" open-type="reLaunch">跳转</navigator>
+		</view>
 	</view>
 </template>
 
-<script>
+<script setup>
+	defineProps({
+		url:{
+			type:String,
+			default:'',
+		}
+	})
 	
 </script>
 
 <style lang="scss" scoped>
 	.row{
+		// border: solid 1rpx red;
 		height:90rpx;
 		border-bottom: solid 1px #eee;
 		display:flex;
@@ -31,6 +41,7 @@
 		align-items: center;
 		padding:0 30rpx;
 		background-color:white;
+		positon:relative;
 		.left, .right{
 			display:flex;
 			justify-content: space-between;
@@ -47,6 +58,20 @@
 				font-size:30rpx;
 				color:#aaa;
 			}
+		}
+		.navigate{
+			position: absolute;
+			height:90rpx;
+			width:100%;
+			left:0;
+			.nav{
+				border: solid 1rpx red;
+				height:100%;
+				width:100%;
+				background-color: white;
+				opacity: 0;
+			}
+			
 		}
 			
 	}

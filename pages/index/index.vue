@@ -108,7 +108,7 @@
 			height:80rpx;
 			border-radius: 80rpx;
 			background-color: rgb(249, 249, 249);
-			margin:auto;
+			margin:0 30rpx;
 			display:flex;
 			line-height: 80rpx;
 			.left{
@@ -159,6 +159,7 @@
 			}
 		}
 		.select{
+			width:750rpx;
 			.date{
 				color:#B3B3B3;
 			}
@@ -195,6 +196,7 @@
 		}
 		.theme{
 			// border:solid 1rpx red;
+			width:750rpx;
 			padding-bottom: 50rpx;
 			navigator{
 				color:#B3B3B3;
