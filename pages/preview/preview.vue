@@ -84,21 +84,21 @@
 		</uni-popup>
 		
 		<!-- 评分信息 -->
-		<uni-popup ref="ScorePopup" type="center">
+		<uni-popup ref="ScorePopup" type="center" :is-mask-click="false">
 			<view class="ScoreContent">
 				<view class="info_head">
 					<view></view>
 					<view class="text">壁纸信息</view>
-					<view class="close" @click = "closeInfo">
+					<view class="close" @click = "closeScoreInfo">
 						<uni-icons type="closeempty" size="20"></uni-icons>
 					</view>
 				</view>
 				<view class="content">
-					<uni-rate value="3" size="20" allowHalf/>
-					<text class="score">5分</text>
+					<uni-rate size="20" allowHalf v-model="score"/>
+					<text class="score">{{score}}分</text>
 				</view>
 				<view class="footer">
-					<button type="default">确认评分</button>
+					<button :disabled="!score" @click="clickScore" type="default" size="mini" plain>确认评分</button>
 				</view>
 				
 			</view>
@@ -131,6 +131,10 @@
 	}
 	const closeScoreInfo = ()=>{
 		ScorePopup.value.close()
+	}
+	const score = ref(0)
+	const clickScore = ()=>{
+		console.log("评分了")
 	}
 	
 </script>
@@ -217,7 +221,7 @@
 
 // 弹窗消息-壁纸与评分公共样式
 .info_head{
-		height:70rpx;
+		height:60rpx;
 		// border:solid 1rpx red;
 		display: flex;
 		justify-content: space-between;
@@ -300,7 +304,7 @@
 	background-color: #fff;
 	border-radius:30rpx;
 	padding:30rpx;
-	width:60vw;
+	width:65vw;
 	.content{
 		padding:20rpx 0;
 		display: flex;
@@ -314,6 +318,12 @@
 			text-align: right;
 			line-height: 1em;
 		}
+	}
+	.footer{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding:20rpx 0;
 	}
 }
 

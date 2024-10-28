@@ -24,40 +24,17 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.row.data-v-fc6e88d6 {
-  height: 90rpx;
-  border-bottom: solid 1px #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 30rpx;
-  background-color: white;
-  positon: relative;
+.classList .content.data-v-104357ab {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rpx;
+  padding: 5rpx;
 }
-.row .left.data-v-fc6e88d6, .row .right.data-v-fc6e88d6 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10rpx 10rpx;
+.classList .content .item.data-v-104357ab {
+  height: 440rpx;
 }
-.row .left .text.data-v-fc6e88d6, .row .right .text.data-v-fc6e88d6 {
-  padding-left: 20rpx;
-  color: #666;
-}
-.row .right .text.data-v-fc6e88d6 {
-  font-size: 30rpx;
-  color: #aaa;
-}
-.row .navigate.data-v-fc6e88d6 {
-  position: absolute;
-  height: 90rpx;
+.classList .content .item image.data-v-104357ab {
+  display: block;
   width: 100%;
-  left: 0;
-}
-.row .navigate .nav.data-v-fc6e88d6 {
-  border: solid 1rpx red;
   height: 100%;
-  width: 100%;
-  background-color: white;
-  opacity: 0;
 }

@@ -23,21 +23,27 @@ const _sfc_main = {
           color: "rgb(40, 176, 138)"
         }),
         c: common_vendor.p({
+          url: "/pages/classify/classify"
+        }),
+        d: common_vendor.p({
           type: "star-filled",
           size: "30",
           color: "rgb(40, 176, 138)"
         }),
-        d: common_vendor.p({
+        e: common_vendor.p({
+          url: "/pages/classify/classify"
+        }),
+        f: common_vendor.p({
           type: "chatboxes-filled",
           size: "30",
           color: "rgb(40, 176, 138)"
         }),
-        e: common_vendor.p({
+        g: common_vendor.p({
           type: "notification-filled",
           size: "30",
           color: "rgb(40, 176, 138)"
         }),
-        f: common_vendor.p({
+        h: common_vendor.p({
           type: "flag-filled",
           size: "30",
           color: "rgb(40, 176, 138)"

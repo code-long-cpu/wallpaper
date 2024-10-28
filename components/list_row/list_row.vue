@@ -6,7 +6,7 @@
 			</view> 
 			<view class="text">
 				<slot name="l-text"></slot>
-			</view>
+			</view> 
 		</view>
 		<view class="right">
 			<view class="text">

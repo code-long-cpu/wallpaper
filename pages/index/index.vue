@@ -1,5 +1,7 @@
 <template>
 	<view class="home pageBg">
+		<!-- 自定义公共头部搜索栏 -->
+		<custom-navi-bar></custom-navi-bar>
 		<!-- tabbar栏目 -->
 		<view class="banner">
 			<swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" autoplay circular>

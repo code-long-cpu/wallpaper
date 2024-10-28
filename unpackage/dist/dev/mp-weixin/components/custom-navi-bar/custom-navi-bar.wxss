@@ -24,40 +24,32 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.row.data-v-fc6e88d6 {
-  height: 90rpx;
-  border-bottom: solid 1px #eee;
+.customNaviBar .navBar.data-v-3bae6397 {
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+}
+.customNaviBar .navBar .stateBar.data-v-3bae6397 {
+  border: solid 1rpx yellow;
+}
+.customNaviBar .navBar .naviBar.data-v-3bae6397 {
+  border: solid 1rpx red;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 0 30rpx;
-  background-color: white;
-  positon: relative;
 }
-.row .left.data-v-fc6e88d6, .row .right.data-v-fc6e88d6 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10rpx 10rpx;
+.customNaviBar .navBar .naviBar .text.data-v-3bae6397 {
+  font-size: 50rpx;
+  font-weight: 500;
 }
-.row .left .text.data-v-fc6e88d6, .row .right .text.data-v-fc6e88d6 {
-  padding-left: 20rpx;
-  color: #666;
-}
-.row .right .text.data-v-fc6e88d6 {
-  font-size: 30rpx;
-  color: #aaa;
-}
-.row .navigate.data-v-fc6e88d6 {
-  position: absolute;
-  height: 90rpx;
-  width: 100%;
-  left: 0;
-}
-.row .navigate .nav.data-v-fc6e88d6 {
+.customNaviBar .navBar .naviBar .search_area.data-v-3bae6397 {
   border: solid 1rpx red;
-  height: 100%;
-  width: 100%;
-  background-color: white;
-  opacity: 0;
+  display: flex;
+  align-items: center;
+  width: 250rpx;
+  border-radius: 50rpx;
+  padding-left: 10rpx;
+  margin-left: 10rpx;
 }
