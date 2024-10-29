@@ -30,12 +30,9 @@
   left: 0;
   top: 0;
   z-index: 5;
-}
-.customNaviBar .navBar .stateBar.data-v-3bae6397 {
-  border: solid 1rpx yellow;
+  background: linear-gradient(to bottom, transparent, #fff 400rpx), linear-gradient(to left, #FADBD8 20%, #ABEBC6);
 }
 .customNaviBar .navBar .naviBar.data-v-3bae6397 {
-  border: solid 1rpx red;
   display: flex;
   align-items: center;
   padding: 0 30rpx;
@@ -45,11 +42,14 @@
   font-weight: 500;
 }
 .customNaviBar .navBar .naviBar .search_area.data-v-3bae6397 {
-  border: solid 1rpx red;
+  border: solid 1rpx white;
+  height: 50rpx;
   display: flex;
   align-items: center;
   width: 250rpx;
   border-radius: 50rpx;
   padding-left: 10rpx;
   margin-left: 10rpx;
+  background: rgba(255, 255, 255, 0.4);
+  color: #999;
 }

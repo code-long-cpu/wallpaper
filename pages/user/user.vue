@@ -34,9 +34,13 @@
 					<template #l-text>联系客服</template>
 					<!-- <template #r-text></template> -->
 				</list_row>
+					
+				<!-- 条件编译：如果在微信小程序页面下显示联系客服 -->
 				<!-- #ifdef MP -->
 				<button class="contact" open-type="contact">联系客服</button>
 				<!-- #endif -->
+				
+				<!-- 条件编译：如果不在微信小程序页面下显示拨打电话 -->
 				<!-- #ifndef MP -->
 				<button class="contact" @click="contact">拨打电话</button>
 				<!-- #endif -->
@@ -84,7 +88,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding:50rpx 0;
+		padding:200rpx 0 100rpx 0;
 		.avatar{
 			width:160rpx;
 			height:160rpx;

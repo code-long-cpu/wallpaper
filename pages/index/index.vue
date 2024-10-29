@@ -1,7 +1,7 @@
 <template>
 	<view class="home pageBg">
 		<!-- 自定义公共头部搜索栏 -->
-		<custom-navi-bar></custom-navi-bar>
+		<custom-navi-bar title="推荐"></custom-navi-bar>
 		<!-- tabbar栏目 -->
 		<view class="banner">
 			<swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" autoplay circular>
@@ -25,14 +25,8 @@
 			</view>
 			<view class="center">
 				<swiper vertical autoplay interval="1500" duration="300" circular>
-					<swiper-item>
-						<view class="swiper-item">公告1公告1公告1公告1公告1公告1公告1公告1公告1公告1</view>
-					</swiper-item>
-					<swiper-item>
-						<view class="swiper-item">公告2公告2公告2公告2公告2公告2公告2公告2公告2公告2</view>
-					</swiper-item>
-					<swiper-item>
-						<view class="swiper-item">公告3公告3公告3公告3公告3公告3公告3公告3公告3公告3</view>
+					<swiper-item v-for="item in 3">
+						<view class="swiper-item" @click="notice">公告1公告1公告1公告1</view>
 					</swiper-item>
 				</swiper>
 			</view>
@@ -40,6 +34,29 @@
 				 <uni-icons type="right" size="16"></uni-icons>
 			</view>
 		</view>
+		
+		<!-- 公告详情面板 -->
+		<uni-popup ref="noticePopup" type="center" >
+			<view class="noticeArea">
+				<view class="noticeTitl">
+					<class class="tag">
+						<uni-tag :inverted="true" text="置顶" type="error"  size="mini"/>
+					</class>
+					<text class="text">欢迎使用龙哥壁纸小程序，扫描获取最新动态。</text>
+				</view>
+				<view class="noticeInfo">
+					<view class="text">龙哥不虚</view>
+					<view class="date">
+						<uni-dateformat :date="Date.now()" format="yyyy-MM-dd hh:mm:ss" ></uni-dateformat>
+					</view>
+				</view>
+				<view class="noticeContent">
+					<image class="img" src="@/common/images/long.jpg" mode=""></image>
+				</view>
+				<view class="noticeDes">扫码关注“龙哥”的微信号，分享最新的技术及动态。</view>
+				<view class="noticeDate">阅读 1020</view>
+			</view>
+		</uni-popup>
 		
 		<!-- 每日推荐 -->
 		<view class="select">
@@ -55,7 +72,7 @@
 			<view class="content">
 				<scroll-view scroll-x class="scroll">
 					<view class="box" v-for="item in 10">
-						<image class="scroll-img" src="/common/images/classify2.jpg" mode="aspectFill"></image>
+						<image class="scroll-img" @click="navigate" src="/common/images/classify2.jpg" mode="aspectFill"></image>
 					</view>
 				</scroll-view>
 			</view>
@@ -78,11 +95,25 @@
 </template>
 
 <script setup>
+	// 点击通告打开通告信息
+	import {ref} from "vue";
+	const noticePopup = ref(null)
+	const notice=()=>{
+		noticePopup.value.open()
+	}
+	
+	// 推荐图片跳转到预览图
+	const navigate = ()=>{
+		uni.navigateTo({
+			url:"/pages/preview/preview"
+		})
+	}
 	
 </script>
 
 <style lang="scss" scoped>
 	.home{
+		// 滑动窗口样式
 		.banner{
 			width:750rpx;
 			padding:30rpx 0;
@@ -104,6 +135,7 @@
 				}
 			}
 		}
+		// 公告栏样式
 		.notice{
 			// border:solid 1rpx red;
 			width:690rpx;
@@ -160,6 +192,60 @@
 				align-items: center;
 			}
 		}
+		// 公告详情面板
+		.noticeArea{
+			width:550rpx;
+			border-radius: 30rpx;
+			padding:50rpx 40rpx;
+			height:fit-content;
+			background-color: white;
+			.noticeTitl{
+				display: flex;
+				.tag{
+					min-width:70rpx;
+					padding:4rpx;
+					// border: solid 1rpx red;
+				}
+				.text{
+					font-size: 40rpx;
+					margin-left: 10rpx;
+				}
+			}
+			.noticeInfo{
+				display: flex;
+				font-size: 25rpx;
+				color:$text-font-color-3;
+				align-items: center;
+				.text{
+					margin:20rpx 0;
+				}
+				.date{
+					margin-left:20rpx;
+				}
+			}
+			.noticeContent{
+				width:100%;
+				// border: solid 1rpx red;
+				.img{
+					width:300rpx;
+					height:300rpx;
+					display: block;
+					margin: auto;
+				}
+			}
+			.noticeDes{
+				font-size: 25rpx;
+				color:#000;
+				margin:20rpx 0;
+			}
+			.noticeDate{
+				font-size: 25rpx;
+				color:$text-font-color-3;
+				margin:20rpx 0;
+			}
+		}
+		
+		// 每日推荐
 		.select{
 			width:750rpx;
 			.date{

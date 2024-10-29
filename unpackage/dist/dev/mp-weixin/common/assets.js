@@ -2,7 +2,8 @@
 const _imports_0$4 = "/assets/banner1.a7a3b276.jpg";
 const _imports_1$1 = "/assets/banner2.74187479.jpg";
 const _imports_2 = "/assets/banner3.f3dafc89.jpg";
-const _imports_3 = "/assets/classify2.a7a768ab.jpg";
+const _imports_3 = "/assets/long.85ccb93f.jpg";
+const _imports_4 = "/assets/classify2.a7a768ab.jpg";
 const _imports_0$3 = "/static/xxmLogo.png";
 const _imports_0$2 = "/assets/preview2.bcea3632.jpg";
 const _imports_0$1 = "/assets/preview1.99e38f81.jpg";
@@ -17,3 +18,4 @@ exports._imports_1 = _imports_1$1;
 exports._imports_1$1 = _imports_1;
 exports._imports_2 = _imports_2;
 exports._imports_3 = _imports_3;
+exports._imports_4 = _imports_4;

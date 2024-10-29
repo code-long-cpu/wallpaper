@@ -2,6 +2,7 @@
   "navigationBarTitleText": "分类",
   "navigationStyle": "custom",
   "usingComponents": {
+    "custom-navi-bar": "../../components/custom-navi-bar/custom-navi-bar",
     "theme-item": "../../components/theme-item/theme-item"
   }
 }

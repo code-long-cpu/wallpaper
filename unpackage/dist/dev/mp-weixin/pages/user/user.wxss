@@ -29,7 +29,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50rpx 0;
+  padding: 200rpx 0 100rpx 0;
 }
 .userLayout .userInfo .avatar.data-v-0f7520f0 {
   width: 160rpx;

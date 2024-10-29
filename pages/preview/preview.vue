@@ -9,7 +9,9 @@
 		
 		<!-- 遮罩信息 -->
 		<view class="mask" v-show="maskState">
-			<view class="goBack"></view>
+			<view class="goBack" :style="{top:statusBarHeight + 'px'}">
+				<uni-icons type="back" size="30" color="#fff" @click="goBack"></uni-icons>
+			</view>
 			<view class="count">9 / 12</view>  
 			<view class="time">
 				<uni-dateformat :date="new Date()" format="hh:mm"></uni-dateformat>
@@ -34,7 +36,7 @@
 		</view>
 		
 		<!-- 弹窗信息-壁纸信息 -->
-		<uni-popup ref="infoPopup" type="bottom">
+		<uni-popup ref="infoPopup" type="bottom" :safe-area="false">
 			<view class="info">
 				<view class="info_head">
 					<view></view>
@@ -108,6 +110,7 @@
 
 <script setup>
 	import {ref} from 'vue';
+	import {statusBarHeight} from "@/utils/system.js"
 	
 	// 桌面信息显示与隐藏
 	const maskState = ref(true);
@@ -137,6 +140,10 @@
 		console.log("评分了")
 	}
 	
+	const goBack = () =>{
+		uni.navigateBack()
+	}
+	
 </script>
 
 <style lang="scss" scoped>
@@ -161,9 +168,23 @@
 			right:0;
 			margin: auto;
 			width:fit-content;
+			// border:solid 1rpx white;
+			
 		}
 		.goBack{
-			
+			// position:absolute;
+			top:0;
+			left:30rpx;
+			margin-left:0;
+			border:solid 1rpx white;
+			width:38px;
+			height:38px;
+			border-radius: 50%;
+			background-color: rgba(0,0,0,0.5);
+			backdrop-filter: blur(10rpx);
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 		.count{
 			top:10vh;
