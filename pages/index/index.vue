@@ -2,18 +2,13 @@
 	<view class="home pageBg">
 		<!-- 自定义公共头部搜索栏 -->
 		<custom-navi-bar title="推荐"></custom-navi-bar>
-		<!-- tabbar栏目 -->
+		<!-- 轮播图位置 -->
 		<view class="banner">
 			<swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" autoplay circular>
-				<swiper-item>
-					<image src="../../common/images/banner1.jpg" mode="aspectFill"></image>
+				<swiper-item v-for="item in BannerImg" :key="item._id">
+					<image :src="item.picurl" mode="aspectFill"></image>
 				</swiper-item>
-				<swiper-item>
-					<image src="../../common/images/banner2.jpg" mode="aspectFill"></image>
-				</swiper-item>
-				<swiper-item>
-					<image src="../../common/images/banner3.jpg" mode="aspectFill"></image>
-				</swiper-item>
+				
 			</swiper>
 		</view>
 		
@@ -108,6 +103,20 @@
 			url:"/pages/preview/preview"
 		})
 	}
+	
+	// 请求：获取轮播图图片
+	const BannerImg = ref([])
+	const getBannerImg = async()=>{
+		const res = await uni.request({
+			url:"https://tea.qingnian8.com/api/bizhi/homeBanner",
+			header:{
+				"access-key":"longxiami",
+			}
+		})
+		BannerImg.value = res.data.data
+		console.log(BannerImg.value)
+	}
+	getBannerImg()
 	
 </script>
 

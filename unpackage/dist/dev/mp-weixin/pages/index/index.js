@@ -34,67 +34,82 @@ const _sfc_main = {
         url: "/pages/preview/preview"
       });
     };
+    const BannerImg = common_vendor.ref([]);
+    const getBannerImg = async () => {
+      const res = await common_vendor.index.request({
+        url: "https://tea.qingnian8.com/api/bizhi/homeBanner",
+        header: {
+          "access-key": "longxiami"
+        }
+      });
+      BannerImg.value = res.data.data;
+      console.log(BannerImg.value);
+    };
+    getBannerImg();
     return (_ctx, _cache) => {
       return {
         a: common_vendor.p({
           title: "推荐"
         }),
-        b: common_assets._imports_0,
-        c: common_assets._imports_1,
-        d: common_assets._imports_2,
-        e: common_vendor.p({
+        b: common_vendor.f(BannerImg.value, (item, k0, i0) => {
+          return {
+            a: item.picurl,
+            b: item._id
+          };
+        }),
+        c: common_vendor.p({
           type: "sound-filled",
           size: "20",
           color: "rgb(40, 176, 138)"
         }),
-        f: common_vendor.f(3, (item, k0, i0) => {
+        d: common_vendor.f(3, (item, k0, i0) => {
           return {};
         }),
-        g: common_vendor.o(notice),
-        h: common_vendor.p({
+        e: common_vendor.o(notice),
+        f: common_vendor.p({
           type: "right",
           size: "16"
         }),
-        i: common_vendor.p({
+        g: common_vendor.p({
           inverted: true,
           text: "置顶",
           type: "error",
           size: "mini"
         }),
-        j: common_vendor.p({
+        h: common_vendor.p({
           date: Date.now(),
           format: "yyyy-MM-dd hh:mm:ss"
         }),
-        k: common_assets._imports_3,
-        l: common_vendor.sr(noticePopup, "1cf27b2a-3", {
+        i: common_assets._imports_0,
+        j: common_vendor.sr(noticePopup, "1cf27b2a-3", {
           "k": "noticePopup"
         }),
-        m: common_vendor.p({
+        k: common_vendor.p({
           type: "center"
         }),
-        n: common_vendor.p({
+        l: common_vendor.p({
           type: "calendar",
           size: "18",
           color: "rgb(40, 176, 138)"
         }),
-        o: common_vendor.p({
+        m: common_vendor.p({
           date: Date.now(),
           format: "dd号"
         }),
-        p: common_vendor.f(10, (item, k0, i0) => {
+        n: common_vendor.f(10, (item, k0, i0) => {
           return {};
         }),
-        q: common_vendor.o(navigate),
-        r: common_assets._imports_4,
-        s: common_vendor.f(8, (item, k0, i0) => {
+        o: common_vendor.o(navigate),
+        p: common_assets._imports_1,
+        q: common_vendor.f(8, (item, k0, i0) => {
           return {
             a: "1cf27b2a-11-" + i0
           };
         }),
-        t: common_vendor.p({
+        r: common_vendor.p({
           isMore: false
         }),
-        v: common_vendor.p({
+        s: common_vendor.p({
           isMore: true
         })
       };
