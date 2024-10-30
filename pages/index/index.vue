@@ -85,7 +85,7 @@
 			</common-title>
 			<view class="content">
 				<theme-item v-for="item in themeList" :isMore="false" :item="item"></theme-item>
-				<theme-item :isMore="true" ></theme-item>
+				<theme-item :isMore="true"></theme-item>
 			</view>
 		</view>
 	</view>

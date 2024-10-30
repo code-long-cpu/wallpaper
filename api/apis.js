@@ -42,3 +42,11 @@
 		 data,
 	 })
  }
+ 
+ // 导出请求:获取专题一项图片列表
+ export const apiImgList =(data={})=>{
+	 return request({
+		 url:"/wallList",
+		 data
+	 })
+ }

@@ -1,10 +1,11 @@
 <template>
 	<view class="themeItem">
 		<!-- 正常分类 -->
-		<navigator class="box" v-if="!isMore" url="/pages/classList/classList">
+		<navigator class="box" v-if="!isMore" :url="'/pages/classList/classList?id='+item._id+'&name='+item.name">
+			<!-- // {{item._id}} -->
 			<image class = "img" :src="item.picurl" mode="aspectFill"></image>
 			<view class="mask">{{item.name}}</view>
-			<view class="tab">三天前更新</view>
+			<view class="tab">{{timeAgo(item.updateTime)}}前更新</view>
 		</navigator>
 		<!-- 更多 -->
 		<navigator class="box more" v-if="isMore" url="/pages/classify/classify" open-type="reLaunch">
@@ -12,13 +13,13 @@
 			<view class="mask">
 				<uni-icons type="more-filled" size="30" color="rgba(255,255,255)"></uni-icons>
 				<view class="text">更多</view>
-
 			</view>
 		</navigator>
 	</view>
 </template>
 
 <script setup>
+	// 接收主页分类数据父组件传来的值
 	defineProps({
 		isMore:{
 			type:Boolean,
@@ -30,12 +31,13 @@
 				return {
 					name:"默认名称",
 					picurl:"../../common/images/preview1.jpg",
-					updateTime:Date.now()-1000*60*60,
+					updateTime:Date.now(),
 				}
-
 			}
 		}
 	})
+	// 时间戳函数
+	import {timeAgo} from "@/utils/time.js"
 </script>
 
 <style lang="scss" scoped>
@@ -74,7 +76,7 @@
 			backdrop-filter: blur(10rpx);
 			color:white;
 			padding:5rpx 20rpx;
-			font-size: 2  2rpx;
+			font-size: 22rpx;
 			border-radius: 0 0 20rpx 0;
 		}
 	}
