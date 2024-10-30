@@ -2,9 +2,9 @@
 	<view class="themeItem">
 		<!-- 正常分类 -->
 		<navigator class="box" v-if="!isMore" url="/pages/classList/classList">
-			<image class = "img" src="../../common/images/classify1.jpg" mode="aspectFill"></image>
-			<view class="mask">明星美女</view>
-			<view class="tab">3天前更新</view>
+			<image class = "img" :src="item.picurl" mode="aspectFill"></image>
+			<view class="mask">{{item.name}}</view>
+			<view class="tab">三天前更新</view>
 		</navigator>
 		<!-- 更多 -->
 		<navigator class="box more" v-if="isMore" url="/pages/classify/classify" open-type="reLaunch">
@@ -23,6 +23,17 @@
 		isMore:{
 			type:Boolean,
 			default:false,
+		},
+		item:{
+			type:Object,
+			default(){
+				return {
+					name:"默认名称",
+					picurl:"../../common/images/preview1.jpg",
+					updateTime:Date.now()-1000*60*60,
+				}
+
+			}
 		}
 	})
 </script>

@@ -20,8 +20,8 @@
 			</view>
 			<view class="center">
 				<swiper vertical autoplay interval="1500" duration="300" circular>
-					<swiper-item v-for="item in 3">
-						<view class="swiper-item" @click="notice">公告1公告1公告1公告1</view>
+					<swiper-item v-for="item in NoticeList" :key="item._id">
+						<view class="swiper-item" @click="notice">{{item.title}}</view>
 					</swiper-item>
 				</swiper>
 			</view>
@@ -55,6 +55,7 @@
 		
 		<!-- 每日推荐 -->
 		<view class="select">
+			<!-- 推荐标题 -->
 			<common-title>
 				<template #name>每日推荐</template>
 				<template #custom>
@@ -64,10 +65,11 @@
 					</view>
 				</template>
 			</common-title>
+			<!-- 推荐图片 -->
 			<view class="content">
 				<scroll-view scroll-x class="scroll">
-					<view class="box" v-for="item in 10">
-						<image class="scroll-img" @click="navigate" src="/common/images/classify2.jpg" mode="aspectFill"></image>
+					<view class="box" v-for="item in RecomImg" :key="item._id">
+						<image class="scroll-img" @click="navigate" :src="item.smallPicurl" mode="aspectFill"></image>
 					</view>
 				</scroll-view>
 			</view>
@@ -82,8 +84,8 @@
 				</template>
 			</common-title>
 			<view class="content">
-				<theme-item v-for="item in 8" :isMore="false"></theme-item>
-				<theme-item :isMore="true"></theme-item>
+				<theme-item v-for="item in themeList" :isMore="false" :item="item"></theme-item>
+				<theme-item :isMore="true" ></theme-item>
 			</view>
 		</view>
 	</view>
@@ -105,18 +107,71 @@
 	}
 	
 	// 请求：获取轮播图图片
+	import {apiBannarImg,apiRecomImg,apiNoticeList,apiThemeList} from "@/api/apis.js"
 	const BannerImg = ref([])
-	const getBannerImg = async()=>{
-		const res = await uni.request({
+	// ①封装写法
+	// const getBannerImg = async()=>{
+	// 	const res = await apiBannarImg()
+	// 	BannerImg.value = res.data.data
+	// }
+	
+	// ②async/await原生写法(直接接收到uni.request请求成功success的数据，返回的就是promise对象)
+	// const getBannerImg = async()=>{
+	// 	const res = await uni.request({
+	// 		url:"https://tea.qingnian8.com/api/bizhi/homeBanner",
+	// 		header:{
+	// 			"access-key":"longxiami",
+	// 		},
+	// 	})
+	// 	console.log(res)
+	// 	BannerImg.value = res.data.data
+	// 	console.log(BannerImg.value)
+	// }
+	
+	// ③不用async/await写法(需要在成功success返回的res中进行操作)
+	const getBannerImg = ()=>{
+		const res = uni.request({
 			url:"https://tea.qingnian8.com/api/bizhi/homeBanner",
 			header:{
 				"access-key":"longxiami",
+			},
+			success:res=>{
+				console.log(res)
+				BannerImg.value = res.data.data
+				console.log(BannerImg.value)
+			},
+			fail:err=>{
 			}
 		})
-		BannerImg.value = res.data.data
-		console.log(BannerImg.value)
 	}
 	getBannerImg()
+	
+	// 封装请求：获取每日推荐图片
+	const RecomImg = ref([])
+	const getRecomImg = async()=>{
+		const res = await apiRecomImg()
+		console.log(res)
+		RecomImg.value = res.data
+	}
+	getRecomImg()
+	 
+	// 封装请求：获取通告消息
+	const NoticeList = ref([])
+	const getNotice = async() =>{
+		const res = await apiNoticeList({select:true})
+		NoticeList.value = res.data
+		// console.log(NoticeList.value)
+	}
+	getNotice()
+	
+	// 封装请求:获取专题精选壁纸
+	const themeList = ref([])
+	const getThemeList = async()=>{
+		const res = await apiThemeList({select:true})
+		themeList.value = res.data
+		console.log(themeList.value)
+	}
+	getThemeList()
 	
 </script>
 
