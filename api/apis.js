@@ -50,3 +50,20 @@
 		 data
 	 })
  }
+ 
+ // 导出请求:给图片打分
+ export const apiSetupScore =(data={})=>{
+ 	 return request({
+ 		 url:"/setupScore",
+ 		 data
+ 	 })
+ }
+ 
+ // 导出请求:下载请求
+ 
+ export const apiDownLoadWall =(data={})=>{
+ 	 return request({
+ 		 url:"/downloadWall",
+ 		 data
+ 	 })
+ }

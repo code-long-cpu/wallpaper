@@ -59,7 +59,7 @@
           backdrop-filter: blur(10rpx);
   color: white;
   padding: 5rpx 20rpx;
-  font-size: 2 2rpx;
+  font-size: 22rpx;
   border-radius: 0 0 20rpx 0;
 }
 .themeItem .box.more .mask.data-v-f4eafbca {

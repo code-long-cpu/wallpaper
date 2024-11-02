@@ -94,6 +94,8 @@
 <script setup>
 	// 点击通告打开通告信息
 	import {ref} from "vue";
+	// 页面分享功能
+	import {onShareAppMessage,onShareTimeline} from '@dcloudio/uni-app'
 	const noticePopup = ref(null)
 	const notice=()=>{
 		noticePopup.value.open()
@@ -173,6 +175,24 @@
 	}
 	getThemeList()
 	
+	
+	// 分享页面给微信好友
+	onShareAppMessage((e)=>{
+		console.log(e)
+		return{
+			title:"龙家乐壁纸",
+			path:'/pages/index/index'
+		}
+	})
+	
+	// 分享朋友圈
+	onShareTimeline(()=>{
+		// console.log()
+		return{
+			title:"龙家乐壁纸",
+			// imageUrl:"",  //设置分享缩略图
+		}
+	})
 </script>
 
 <style lang="scss" scoped>

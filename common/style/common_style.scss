@@ -8,3 +8,9 @@ view,swiper,swiper-item,image{
 	linear-gradient(to bottom,transparent, #fff 400rpx),
 	linear-gradient(to left,#FADBD8 20%, #ABEBC6);
 }
+.loadingmore{
+	padding:30rpx 0;
+}
+.save-area-inset-bottom{
+	height:env(save-area-inset-bottom)
+}
