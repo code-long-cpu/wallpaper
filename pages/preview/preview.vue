@@ -188,14 +188,25 @@
 		}
 	}
 	const goBack = () => {
-		uni.navigateBack()
+		uni.navigateBack({
+			// 成功返回的回调（正常页面返回）
+			success:res=>{
+				
+			},
+			// 失败的回调（我分享单张图片给别人的页面，无法返回，处理情况:直接relanch到首页）
+			fail:err=>{
+				uni.reLaunch({
+					url:'/pages/index/index'
+				})
+			}
+		})
 	}
 
-	// 接收并处理预览图片
+	// 接收并处理预览图片数据
 	const newList = ref([])
 	// 获取缓存图片
 	const StrogeList = uni.getStorageSync('StrogeList') || []
-	// console.log(StrogeList)
+	// console.log(StrogeList) 通过小图图片地址换取请求大图的地址，把缓存数据map为新newList数据
 	newList.value = StrogeList.map(item => {
 		return {
 			...item,
@@ -204,15 +215,34 @@
 	})
 	console.log(newList.value)
 
+	// 启动页面拿别的页面传递来的数据
 	// 总图数量为newList.lenght
 	// 处理图片显示的索引值index
 	const cuerrentId = ref()
 	const currentIndex = ref()
-	onLoad((e) => {
+	import {apiDetailWall} from '@/api/apis.js'
+	
+	onLoad(async(e) => {
 		console.log(e)
+		// ①启动页面拿到传递来的图片id值，通过此id才能获取存在缓存中的当前需要显示的图片信息
 		cuerrentId.value = e.id;
+		// ②拿到分享id，别人手机打开启动页面拿到传来的图片id值，靠这个id值请求单张图片
+		if(e.type=='share'){
+			const res = await apiDetailWall({
+				id:cuerrentId.value
+			})
+			console.log(res)
+			newList.value = res.data.map(item=>{
+				return {
+					...item,
+					picurl: item.smallPicurl.replace("_small.webp", ".jpg")
+				}
+			})
+		}
+		// 通过传递来的id找到newList中的当前需要显示的图片索引
 		currentIndex.value = newList.value.findIndex(item => item._id === cuerrentId.value)
 		// console.log(Index.value)
+		// 通过图片索引值,倒找当前具体的图片信息
 		currentInfo.value = newList.value[currentIndex.value]
 	})
 
@@ -230,7 +260,6 @@
 	// 8.12选学搁置,关于减小数据请求
 
 	// 8.16点击下载,弹窗
-
 	const downloadImg = async () => {
 		// #ifdef H5
 		uni.showModal({
@@ -325,11 +354,30 @@
 			console.log(err)
 			uni.hideLoading()
 		}
-
-
 		// #endif
-
 	}
+	
+	// 页面分享
+	import {onShareAppMessage,onShareTimeline} from '@dcloudio/uni-app'
+	// 分享页面给微信好友
+	onShareAppMessage((e)=>{
+		console.log(e)
+		return{
+			title:"龙家乐壁纸-",
+			path:'/pages/preview/preview?id='+ cuerrentId.value+'&type=share'
+		}
+	})
+	
+	// 分享朋友圈
+	onShareTimeline(()=>{
+		// console.log()
+		return{
+			title:"龙家乐壁纸-",
+			// imageUrl:"",  //设置分享缩略图
+			query:'id='+cuerrentId.value+'&type=share'
+		}
+	})
+
 </script>
 
 <style lang="scss" scoped>

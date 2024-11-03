@@ -69,7 +69,7 @@
 			<view class="content">
 				<scroll-view scroll-x class="scroll">
 					<view class="box" v-for="item in RecomImg" :key="item._id">
-						<image class="scroll-img" @click="navigate" :src="item.smallPicurl" mode="aspectFill"></image>
+						<image class="scroll-img" @click="navigate(item._id)" :src="item.smallPicurl" mode="aspectFill"></image>
 					</view>
 				</scroll-view>
 			</view>
@@ -101,11 +101,15 @@
 		noticePopup.value.open()
 	}
 	
+	
 	// 推荐图片跳转到预览图
-	const navigate = ()=>{
+	const navigate = (id)=>{
+		// 把推荐壁纸数据存到缓存中
+		uni.setStorageSync('StrogeList',RecomImg.value);
 		uni.navigateTo({
-			url:"/pages/preview/preview"
+			url:"/pages/preview/preview?id="+id
 		})
+		
 	}
 	
 	// 请求：获取轮播图图片

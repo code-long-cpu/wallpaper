@@ -1,30 +1,31 @@
 <template>
 	<view class="userLayout pageBg">
 		<view class="userInfo">
+			<view :style="{height:bannerHeight+'px'}"></view>
 			<view class="avatar">
 				<image src="../../static/xxmLogo.png" mode=""></image>
 			</view>
-			<view class="ip">100.100.100.100</view>
+			<view class="ip">{{userinfo.IP}}</view>
 			<view class="address">来自于：圣何塞</view>
 		</view>
 		
 		<view class="section">
 			<view class="list">
 				<!-- 我的下载 -->
-				<list_row url="/pages/classify/classify">
+				<list_row url="/pages/classList/classList?name='我的下载'">
 					<template #l-icon>
 						<uni-icons type="download-filled" size="30" color="rgb(40, 176, 138)"></uni-icons>
 					</template>
 					<template #l-text>我的下载</template>
-					<template #r-text>33</template>
+					<template #r-text>{{userinfo.downloadSize}}</template>
 				</list_row>
 				<!-- 我的收藏 -->
-				<list_row url="/pages/classify/classify">
+				<list_row url="/pages/classList/classList?name='我的收藏'">
 					<template #l-icon>
 						<uni-icons type="star-filled" size="30" color="rgb(40, 176, 138)"></uni-icons>
 					</template>
 					<template #l-text>我的收藏</template>
-					<template #r-text>45</template>
+					<template #r-text>{{userinfo.scoreSize}}</template>
 				</list_row>
 				<!-- 联系客服 -->
 				<list_row class="last">
@@ -68,9 +69,27 @@
 		</view>
 	</view>
 	
+	<!-- <view class="loadingmore" v-else>
+		<view :style="{height:bannerHeight+'px'}"></view>
+		<uni-load-more status="loading"></uni-load-more>
+	</view> -->
+	
 </template>
 
 <script setup>
+	import {bannerHeight} from '@/utils/system.js'
+	import {apiUserInfo} from '@/api/apis.js'
+	import {ref} from 'vue'
+	
+	const userinfo = ref({}) //对象就设置空对象,不至于读不到数据报错
+	
+	const getUserInfo = async()=>{
+		const res = await apiUserInfo()
+		userinfo.value=res.data
+		console.log(userinfo.value)
+	}
+	getUserInfo()
+	
 	const contact = ()=>{
 		uni.makePhoneCall({
 			phoneNumber: '114' //仅为示例
@@ -88,7 +107,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding:200rpx 0 100rpx 0;
+		// padding:200rpx 0 100rpx 0;
 		.avatar{
 			width:160rpx;
 			height:160rpx;

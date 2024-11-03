@@ -16,4 +16,4 @@
 	}
 	
 	// 导出banner广告栏所在位置的高度
-	export const bannerHeight=statusBarHeight+titleHeight()
+	export const bannerHeight= statusBarHeight+ titleHeight()

@@ -60,10 +60,25 @@
  }
  
  // 导出请求:下载请求
- 
  export const apiDownLoadWall =(data={})=>{
  	 return request({
  		 url:"/downloadWall",
  		 data
+ 	 })
+ }
+ 
+ // 导出请求:单张图片请求
+ export const apiDetailWall =(data={})=>{
+ 	 return request({
+ 		 url:"/detailWall",
+ 		 data
+ 	 })
+ }
+ 
+ // 导出请求:个人信息请求
+ export const apiUserInfo =(data={})=>{
+ 	 return request({
+ 		 url:"/userInfo",
+ 		 // data
  	 })
  }

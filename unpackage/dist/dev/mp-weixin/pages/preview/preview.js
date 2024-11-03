@@ -73,7 +73,17 @@ const _sfc_main = {
       }
     };
     const goBack = () => {
-      common_vendor.index.navigateBack();
+      common_vendor.index.navigateBack({
+        // 成功返回的回调（正常页面返回）
+        success: (res) => {
+        },
+        // 失败的回调（我分享单张图片给别人的页面，无法返回，处理情况:直接relanch到首页）
+        fail: (err) => {
+          common_vendor.index.reLaunch({
+            url: "/pages/index/index"
+          });
+        }
+      });
     };
     const newList = common_vendor.ref([]);
     const StrogeList = common_vendor.index.getStorageSync("StrogeList") || [];
@@ -86,9 +96,21 @@ const _sfc_main = {
     console.log(newList.value);
     const cuerrentId = common_vendor.ref();
     const currentIndex = common_vendor.ref();
-    common_vendor.onLoad((e) => {
+    common_vendor.onLoad(async (e) => {
       console.log(e);
       cuerrentId.value = e.id;
+      if (e.type == "share") {
+        const res = await api_apis.apiDetailWall({
+          id: cuerrentId.value
+        });
+        console.log(res);
+        newList.value = res.data.map((item) => {
+          return {
+            ...item,
+            picurl: item.smallPicurl.replace("_small.webp", ".jpg")
+          };
+        });
+      }
       currentIndex.value = newList.value.findIndex((item) => item._id === cuerrentId.value);
       currentInfo.value = newList.value[currentIndex.value];
     });
@@ -178,6 +200,20 @@ const _sfc_main = {
         common_vendor.index.hideLoading();
       }
     };
+    common_vendor.onShareAppMessage((e) => {
+      console.log(e);
+      return {
+        title: "龙家乐壁纸-",
+        path: "/pages/preview/preview?id=" + cuerrentId.value + "&type=share"
+      };
+    });
+    common_vendor.onShareTimeline(() => {
+      return {
+        title: "龙家乐壁纸-",
+        // imageUrl:"",  //设置分享缩略图
+        query: "id=" + cuerrentId.value + "&type=share"
+      };
+    });
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: currentInfo.value
@@ -281,4 +317,5 @@ const _sfc_main = {
   }
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-2dad6c07"]]);
+_sfc_main.__runtimeHooks = 6;
 wx.createPage(MiniProgramPage);

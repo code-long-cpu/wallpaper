@@ -26,9 +26,10 @@
 
 <script setup>
 	import {ref} from 'vue';
-	import {onLoad,onReachBottom} from '@dcloudio/uni-app'
+	import {onLoad,onReachBottom,onUnload} from '@dcloudio/uni-app'
 	import{apiImgList} from "@/api/apis.js";
 	import {onShareAppMessage,onShareTimeline} from '@dcloudio/uni-app'
+	import {gotohome} from '@/utils/gotohome.js'
 	
 	// 创立公共Info变量，接收网址传递来的id和name，给请求方法
 	const Info = {
@@ -48,10 +49,11 @@
 	}
 	
 	
-	// 页面加载onload，获取网址传递来的参数，本页面顺序在setup之后；
+	// 页面加载onload，获取网址传递来的分类参数，本页面顺序在setup之后；
 	let shareName;
 	onLoad((e) => {
 		console.log(e);
+		// if(!e.id) gotohome() //（可有可无，人性化提示）如果id不存在，就显示提示窗，跳回主页
 		Info.name=e.name;
 		Info.classid = e.id;
 		shareName = e.name;
@@ -90,6 +92,13 @@
 			query:'id='+Info.classid+'&name='+shareName
 		}
 	})
+	
+	// 离开此页面就清楚缓存数据(防止每一次进来同一网页，旧有数据混淆串台的情况)
+	onUnload(()=>{
+		uni.removeStorageSync('StrogeList')
+	})
+	
+	
 	
 </script>
 

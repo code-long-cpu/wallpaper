@@ -58,6 +58,9 @@ const _sfc_main = {
         query: "id=" + Info.classid + "&name=" + shareName
       };
     });
+    common_vendor.onUnload(() => {
+      common_vendor.index.removeStorageSync("StrogeList");
+    });
     return (_ctx, _cache) => {
       return common_vendor.e({
         a: !ImgList.value.length && !noData.value

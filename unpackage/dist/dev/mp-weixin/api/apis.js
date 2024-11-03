@@ -35,9 +35,23 @@ const apiDownLoadWall = (data = {}) => {
     data
   });
 };
+const apiDetailWall = (data = {}) => {
+  return utils_request.request({
+    url: "/detailWall",
+    data
+  });
+};
+const apiUserInfo = (data = {}) => {
+  return utils_request.request({
+    url: "/userInfo"
+    // data
+  });
+};
+exports.apiDetailWall = apiDetailWall;
 exports.apiDownLoadWall = apiDownLoadWall;
 exports.apiImgList = apiImgList;
 exports.apiNoticeList = apiNoticeList;
 exports.apiRecomImg = apiRecomImg;
 exports.apiSetupScore = apiSetupScore;
 exports.apiThemeList = apiThemeList;
+exports.apiUserInfo = apiUserInfo;

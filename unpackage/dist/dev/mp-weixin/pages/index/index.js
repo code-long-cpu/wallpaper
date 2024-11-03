@@ -30,9 +30,10 @@ const _sfc_main = {
     const notice = () => {
       noticePopup.value.open();
     };
-    const navigate = () => {
+    const navigate = (id) => {
+      common_vendor.index.setStorageSync("StrogeList", RecomImg.value);
       common_vendor.index.navigateTo({
-        url: "/pages/preview/preview"
+        url: "/pages/preview/preview?id=" + id
       });
     };
     const BannerImg = common_vendor.ref([]);
@@ -140,7 +141,7 @@ const _sfc_main = {
         }),
         m: common_vendor.f(RecomImg.value, (item, k0, i0) => {
           return {
-            a: common_vendor.o(navigate, item._id),
+            a: common_vendor.o(($event) => navigate(item._id), item._id),
             b: item.smallPicurl,
             c: item._id
           };
